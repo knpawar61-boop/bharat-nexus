@@ -3,11 +3,15 @@ import time
 import random
 
 # 1. Premium Page Configuration
-st.set_page_config(page_title="E-SEVA AUTONOMOUS PORTAL", page_icon="🏛️", layout="wide")
+st.set_page_config(
+    page_title="BHARAT NEXUS | Smart Public Service Bridge",
+    page_icon="🏛️",
+    layout="wide"
+)
 
 # 2. Premium CSS Custom Styling (Digital Professional Tech Market Theme)
 st.markdown("""
-    <style>
+<style>
     .stApp {
         background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
         color: #ffffff !important;
@@ -16,177 +20,183 @@ st.markdown("""
         background-color: #0b1519 !important;
         border-right: 1px solid #1a3a4a;
     }
-    [data-testid="stSidebar"] p, [data-testid="stSidebar"] h2 {
-        color: #ffffff !important;
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #00e5ff;
+        letter-spacing: 1.5px;
+        margin-bottom: 0px;
     }
-    h1, h2, h3, h4 {
-        color: #00f2fe !important; 
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: #80deea;
+        font-weight: 500;
+        margin-top: 4px;
+        margin-bottom: 20px;
     }
-    .stTextInput input, .stSelectbox div, .stTextArea textarea, .stNumberInput input {
-        background-color: #162a35 !important;
-        color: #ffffff !important;
-        border: 1px solid #00f2fe !important;
-        border-radius: 6px !important;
-    }
-    div.stButton > button:first-child {
-        background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%) !important;
-        color: white !important;
-        border-radius: 8px !important;
-        border: none !important;
-        font-weight: bold !important;
-        padding: 0.6rem 2.5rem !important;
-    }
-    .stTabs [data-baseweb="tab"] {
-        font-weight: bold !important;
-        color: #00f2fe !important;
-    }
-    /* Style cards for schemes */
-    .scheme-card {
-        background-color: #112530;
-        padding: 20px;
+    .sidebar-card {
+        background: rgba(16, 36, 46, 0.9);
+        border: 1px solid #1e88e5;
         border-radius: 10px;
-        border-left: 5px solid #00c6ff;
-        margin-bottom: 15px;
+        padding: 14px;
+        margin-bottom: 12px;
     }
-    </style>
+    .sidebar-role {
+        font-size: 0.72rem;
+        color: #80deea;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+    .sidebar-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #ffffff;
+    }
+    .info-box {
+        background: rgba(13, 31, 40, 0.85);
+        border-left: 4px solid #00e5ff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+    }
+    div.stButton > button {
+        background: linear-gradient(90deg, #00b4db 0%, #0083b0 100%);
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 1.2rem;
+    }
+    div.stButton > button:hover {
+        background: linear-gradient(90deg, #00e5ff 0%, #00b4db 100%);
+        color: #0b1519;
+    }
+</style>
 """, unsafe_allow_html=True)
 
-# 3. Secure Side Panel Architecture Credits
-st.sidebar.markdown("<h2 style='color:white;'>🏛️ Grid Operations</h2>", unsafe_allow_html=True)
-st.sidebar.markdown("""
-<div style='background-color:#112530; padding:15px; border-radius:10px; margin-bottom:10px; border: 1px solid #00c6ff;'>
-    <p style='margin:0; color:#00f2fe; font-size:11px; font-weight:bold;'>FOUNDER & CHIEF SYSTEMS ARCHITECT</p>
-    <p style='margin:0; color:white; font-weight:bold; font-size:16px;'>Krishna</p>
-</div>
-<div style='background-color:#112530; padding:15px; border-radius:10px; border: 1px solid #0072ff;'>
-    <p style='margin:0; color:#00f2fe; font-size:11px; font-weight:bold;'>TEAM LEADER & DISPATCH MANAGER</p>
-    <p style='margin:0; color:white; font-weight:bold; font-size:16px;'>Omkar</p>
-</div>
-""", unsafe_allow_html=True)
+# Initialize Session State for Live Applications
+if "applications" not in st.session_state:
+    st.session_state.applications = {
+        "BN-70421": {
+            "name": "Demo Citizen",
+            "service": "Fresh Indian Passport (Normal)",
+            "status": "Verified & Forwarded to RPO Desk (Omkar)",
+            "docs": "Aadhaar, PAN, 10th Marksheet"
+        }
+    }
 
-st.sidebar.markdown("---")
-st.sidebar.write("🌐 *Theme State: Digital Professional Market Active*")
+# 3. Sidebar: Grid Operations
+with st.sidebar:
+    st.markdown("### 🏛️ Grid Operations")
+    st.markdown("""
+    <div class="sidebar-card">
+        <div class="sidebar-role">FOUNDER & CHIEF SYSTEMS ARCHITECT</div>
+        <div class="sidebar-name">Krishna</div>
+    </div>
+    <div class="sidebar-card">
+        <div class="sidebar-role">TEAM LEADER & DISPATCH MANAGER</div>
+        <div class="sidebar-name">Omkar</div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("---")
+    st.markdown("🌐 **Theme State:** *Digital Professional*")
+    st.markdown("🟢 **System Grid:** *2026–2027 Active*")
 
-# 4. Global Language Controller Hub
-col_title, col_lang = st.columns(2)
+# 4. Header & Language Selector
+col_head, col_lang = st.columns([3, 1])
+
 with col_lang:
     lang = st.selectbox("🌐 System Language", ["English", "मराठी (Marathi)"])
 
-with col_title:
-    if lang == "English":
-        st.title("🏛️ E-SEVA AUTONOMOUS PORTAL")
-        st.subheader("Central Government Scheme Database Engine")
+is_en = (lang == "English")
+
+with col_head:
+    if is_en:
+        st.markdown('<div class="hero-title">🏛️ BHARAT NEXUS</div>', unsafe_allow_html=True)
+        st.markdown('<div class="hero-subtitle">Smart Public Service Bridge & Autonomous Citizen Scheme Engine</div>', unsafe_allow_html=True)
     else:
-        st.title("🏛️ ई-सेवा स्वायत्त पोर्टल")
-        st.subheader("केंद्रीय शासकीय योजना डेटाबेस इंजिन")
+        st.markdown('<div class="hero-title">🏛️ भारत नेक्सस</div>', unsafe_allow_html=True)
+        st.markdown('<div class="hero-subtitle">स्मार्ट सार्वजनिक सेवा सेतू आणि स्वायत्त नागरिक योजना केंद्र</div>', unsafe_allow_html=True)
 
-st.markdown("---")
+# 5. Main Navigation Tabs
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "🌐 Government Schemes" if is_en else "🌐 शासकीय योजना",
+    "🛂 Passport & Visa Hub" if is_en else "🛂 पासपोर्ट आणि व्हिसा केंद्र",
+    "🪪 Essential Citizen Documents" if is_en else "🪪 आवश्यक नागरिक कागदपत्रे",
+    "📝 Citizen Application Desk" if is_en else "📝 नागरिक अर्ज कक्ष",
+    "🔍 Live Tracker & Eligibility" if is_en else "🔍 थेट ट्रॅकर आणि पात्रता"
+])
 
-# 5. Modular Tab Navigation Design Block
-if lang == "English":
-    tab1, tab2, tab3, tab4 = st.tabs(["📋 Central Schemes Directory", "📝 Citizen Application Desk", "🔍 Real-Time Document Tracker", "⚙️ Automated Verification Matrix"])
-else:
-    tab1, tab2, tab3, tab4 = st.tabs(["📋 शासकीय योजना निर्देशिका", "📝 नागरिक अर्ज केंद्र", "🔍 रिअल-टाइम अर्ज ट्रॅकर", "⚙️ स्वायत्त पात्रता कॅल्क्युलेटर"])
-
-# --- TAB 1: CENTRAL SCHEMES DIRECTORY ---
+# ==========================================
+# TAB 1: CLICKABLE GOVERNMENT SCHEMES
+# ==========================================
 with tab1:
-    if lang == "English":
-        st.write("### 🌐 Live Government Scheme Registry")
-        scheme_cat = st.radio("Filter Schemes by Category:", ["🌾 Agriculture & Farmers", "🎓 Student Scholarships", "💼 Business & Startups"])
-        
-        if scheme_cat == "🌾 Agriculture & Farmers":
-            st.markdown("""
-            <div class='scheme-card'>
-                <h4>1. PM Kisan Samman Nidhi Yojana</h4>
-                <p><b>Benefit:</b> ₹6,000 per year directly transferred to bank accounts in 3 equal installments.</p>
-                <p><b>Eligibility:</b> All small and marginal landholding farmer families in the state.</p>
-            </div>
-            <div class='scheme-card'>
-                <h4>2. CM Kisan Jalyukt Shivar Abhiyan</h4>
-                <p><b>Benefit:</b> Subsidies up to 80% for constructing farm ponds, drip systems, and water wells.</p>
-            </div>
-            """, unsafe_allow_html=True)
-            
-        elif scheme_cat == "🎓 Student Scholarships":
-            st.markdown("""
-            <div class='scheme-card'>
-                <h4>1. MahaDBT Post-Matric Scholarship Slabs</h4>
-                <p><b>Benefit:</b> 100% tuition fee waiver and monthly accommodation maintenance allowances.</p>
-                <p><b>Eligibility:</b> Students from backward social classes with verified income below ₹8 Lakhs.</p>
-            </div>
-            """, unsafe_allow_html=True)
-            
-        elif scheme_cat == "💼 Business & Startups":
-            st.markdown("""
-            <div class='scheme-card'>
-                <h4>1. Pradhan Mantri MUDRA Credit Matrix</h4>
-                <p><b>Benefit:</b> Collateral-free operational project credit loans up to ₹10 Lakhs for young innovators.</p>
-            </div>
-            """, unsafe_allow_html=True)
-    else:
-        st.write("### 🌐 थेट सरकारी योजना निर्देशिका")
-        scheme_cat = st.radio("वर्गीकरणानुसार योजना निवडा:", ["🌾 शेती आणि शेतकरी योजना", "🎓 विद्यार्थी शिष्यवृत्ती", "💼 उद्योग आणि स्टार्टअप योजना"])
-        
-        if scheme_cat == "🌾 शेती आणि शेतकरी योजना":
-            st.markdown("""
-            <div class='scheme-card'>
-                <h4>१. पीएम किसान सन्मान निधी योजना</h4>
-                <p><b>फायदा:</b> प्रति वर्ष ₹६,००० थेट बँक खात्यात ३ समान हप्त्यांमध्ये जमा.</p>
-                <p><b>पात्रता:</b> राज्यातील सर्व अल्पभूधारक शेतकरी कुटुंबे.</p>
-            </div>
-            """, unsafe_allow_html=True)
-        elif scheme_cat == "🎓 विद्यार्थी शिष्यवृत्ती":
-            st.markdown("""
-            <div class='scheme-card'>
-                <h4>१. महाडीबीटी (MahaDBT) पोस्ट-मॅट्रिक शिष्यवृत्ती योजना</h4>
-                <p><b>फायदा:</b> १००% शिक्षण शुल्क माफी आणि मासिक निर्वाह भत्ता लाभ.</p>
-            </div>
-            """, unsafe_allow_html=True)
-        elif scheme_cat == "💼 उद्योग आणि स्टार्टअप योजना":
-            st.markdown("""
-            <div class='scheme-card'>
-                <h4>१. प्रधानमंत्री मुद्रा बँक योजना</h4>
-                <p><b>फायदा:</b> नवीन व्यवसायासाठी विनाहमी ₹१० लाखांपर्यंतचे कर्ज सहाय्य.</p>
-            </div>
-            """, unsafe_allow_html=True)
+    st.subheader("🌐 Live Government Scheme Registry (Click Any Scheme to View Process)" if is_en else "🌐 थेट शासकीय योजना नोंदणी (प्रक्रिया पाहण्यासाठी योजनेवर क्लिक करा)")
+    
+    category = st.radio(
+        "Filter Schemes by Category:" if is_en else "श्रेणीनुसार योजना निवडा:",
+        [
+            "🌾 Agriculture & Farmers",
+            "🎓 Student Scholarships",
+            "💼 Business & Startups",
+            "🏥 Healthcare & Housing"
+        ],
+        horizontal=True
+    )
 
-# --- TAB 2: CITIZEN APPLICATIONS ---
-with tab2:
-    col_form, col_output = st.columns(2)
-    with col_form:
-        if lang == "English":
-            st.write("### 📝 Secure Application Registry")
-            applicant_name = st.text_input("Applicant's Full Name")
-            service_type = st.selectbox("Required Certificate Type:", ["Select...", "Income Certificate", "Caste Certificate", "Domicile Certificate"])
-            annual_income = st.number_input("Annual Income (₹):", min_value=0, value=180000)
-            uploaded_docs = st.text_area("List Ready Documents:")
-            submit_btn = st.button("Deploy File")
-        else:
-            st.write("### 📝 सुरक्षित अर्ज नोंदणी")
-            applicant_name = st.text_input("अर्जदाराचे पूर्ण नाव")
-            service_type = st.selectbox("हवा असलेला दाखला निवडा:", ["निवडा...", "उत्पन्नाचा दाखला", "जातीचा दाखला", "अधिवास प्रमाणपत्र"])
-            annual_income = st.number_input("वार्षिक उत्पन्न (₹):", min_value=0, value=180000)
-            uploaded_docs = st.text_area("तुमच्याकडे असलेली कागदपत्रे:")
-            submit_btn = st.button("सबमिट करा")
-
-    with col_output:
-        st.write("### 🧠 AI Core Feed")
-        if submit_btn:
-            st.success("System Log Registered! Processing Token Transferred to Omkar.")
-
-# --- TAB 3: APPLICATION TRACKER ---
-with tab3:
-    st.write("### 🔍 Central Network Database Query")
-    search_id = st.text_input("Enter 5-Digit Token ID:")
-    if st.button("Query Logs" if lang=="English" else "डेटाबेस तपासा"):
-        st.info("Awaiting ledger validation check by Omkar.")
-
-# --- TAB 4: AUTOMATED ELIGIBILITY TESTING ---
-with tab4:
-    st.write("### ⚙️ Autonomous Eligibility Simulation")
-    calc_income = st.slider("Adjust Income Tracking Bar", 50000, 1500000, 250000, step=50000)
-    if calc_income <= 800000:
-        st.success("🟢 Simulation Result: Eligible under Non-Creamy Layer bounds.")
-    else:
-        st.error("🔴 Simulation Result: Exceeds standard threshold limits.")
+    schemes_data = {
+        "🌾 Agriculture & Farmers": [
+            {
+                "title": "PM-KISAN Samman Nidhi Yojana (₹6,000/Year)",
+                "benefit": "Direct financial support of ₹6,000 per year in 3 equal installments to landholding farmer families.",
+                "docs": "1. Aadhaar Card (linked to mobile & bank)\n2. Land Ownership Records (7/12 Extract / Khatauni)\n3. Bank Passbook (NPCI/DBT enabled)",
+                "steps": "Step 1: Visit official PM-KISAN portal & click 'New Farmer Registration'.\nStep 2: Enter Aadhaar number, State, and Captcha.\nStep 3: Fill land details (Survey/Khata number) and upload 7/12 extract.\nStep 4: Complete e-KYC via OTP or nearest CSC center.",
+                "url": "https://pmkisan.gov.in"
+            },
+            {
+                "title": "Pradhan Mantri Fasal Bima Yojana (Crop Insurance)",
+                "benefit": "Low-premium insurance coverage against crop loss due to drought, flood, hailstorm, or unseasonal rain.",
+                "docs": "1. Aadhaar Card\n2. Land Records (7/12 & 8A)\n3. Sowing Certificate (Peera Patrak)\n4. Bank Account Details",
+                "steps": "Step 1: Open PMFBY portal and click 'Farmer Corner'.\nStep 2: Register with mobile OTP and bank details.\nStep 3: Select crop season (Kharif/Rabi), district, and insured area.\nStep 4: Pay nominal farmer share premium and download policy receipt.",
+                "url": "https://pmfby.gov.in"
+            }
+        ],
+        "🎓 Student Scholarships": [
+            {
+                "title": "National Scholarship Portal (NSP) — Central & State Schemes",
+                "benefit": "Pre-Matric, Post-Matric, and Merit-cum-Means scholarships covering tuition fees and maintenance allowance.",
+                "docs": "1. Aadhaar Card & Student Photo\n2. Previous Year Marksheet\n3. Family Income Certificate\n4. Caste & Domicile Certificate\n5. Bonafide Certificate from Institute",
+                "steps": "Step 1: Complete One-Time Registration (OTR) on NSP with Face/OTP authentication.\nStep 2: Log in with OTR ID and select eligible Central/UGC/AICTE scheme.\nStep 3: Fill academic & bank details and upload scanned documents.\nStep 4: Submit form and print copy for college/school verification.",
+                "url": "https://scholarships.gov.in"
+            },
+            {
+                "title": "MahaDBT / State Post-Matric Scholarship Portal",
+                "benefit": "Full tuition fee reimbursement and exam fee waiver for SC/ST/OBC/EWS/Minority students.",
+                "docs": "1. Aadhaar Card\n2. Caste Validity & Income Certificate (under ₹8 Lakh)\n3. CAP Allotment Letter (for professional courses)\n4. Ration Card & Leaving Certificate",
+                "steps": "Step 1: Register on MahaDBT using Aadhaar OTP.\nStep 2: Complete Profile (Personal, Address, Qualification, Hostel details).\nStep 3: Click 'All Schemes', check eligibility, and click 'Apply'.\nStep 4: Track scrutiny status under 'My Applied Scheme'.",
+                "url": "https://maharashtra.gov.in"
+            }
+        ],
+        "💼 Business & Startups": [
+            {
+                "title": "Pradhan Mantri MUDRA Yojana (Loans up to ₹20 Lakh)",
+                "benefit": "Collateral-free micro-enterprise loans under Shishu (up to ₹50k), Kishore (up to ₹5L), and Tarun (up to ₹20L).",
+                "docs": "1. Aadhaar, PAN & Voter ID\n2. Business Registration / Udyam Certificate\n3. Last 6 Months Bank Statement\n4. Quotation of machinery/equipment to purchase",
+                "steps": "Step 1: Register your business on Udyam Registration portal.\nStep 2: Apply online via JanSamarth Portal or visit your nearest PSU/Private bank.\nStep 3: Submit business project report and KYC documents.\nStep 4: Bank verifies unit and disburses loan directly to account.",
+                "url": "https://jansamarth.in"
+            },
+            {
+                "title": "Udyam MSME Registration (Free Government Business ID)",
+                "benefit": "Official MSME status unlocking lower loan interest rates, subsidy on patent/ISO, and tender preferences.",
+                "docs": "1. Entrepreneur Aadhaar Number\n2. PAN Card & GSTIN (if applicable)\n3. Bank Account Number & IFSC",
+                "steps": "Step 1: Visit official Udyam portal and enter Aadhaar + Name.\nStep 2: Validate OTP and verify PAN details.\nStep 3: Enter business activity (NIC code), investment, and employee count.\nStep 4: Submit with final OTP to download instant Udyam Certificate.",
+                "url": "https://udyamregistration.gov.in"
+            }
+        ],
+        "🏥 Healthcare & Housing": [
+            {
+                "title": "Ayushman Bharat PM-JAY (₹5 Lakh Free Health Cover)",
+                "benefit": "Cashless treatment up to ₹5 lakh per family per year at empanelled government and private hospitals.",
+                "docs": "1. Aadhaar Card\n2. Ration Card / PM-JAY Family ID\n3. Registered Mobile Number",
+                "steps": "Step 1: Visit beneficiary.nha.gov.in and log in with mobile OTP.\nStep 2: Search your name by State, District, and Aadhaar/Ration number.\nStep 3: Complete e-KYC with Aadhaar OTP.\nStep 4: Download your Ayushman Golden Card immediately.",
