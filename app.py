@@ -11,21 +11,21 @@ st.markdown("""
     .hero-subtitle { font-size: 1.2rem; color: #80deea; font-weight: 500; margin-top: 4px; margin-bottom: 14px; }
     .sidebar-card { background: rgba(16, 36, 46, 0.9); border: 1px solid #1e88e5; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
     .sidebar-role { font-size: 0.72rem; color: #80deea; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
-    .sidebar-name { font-size: 1.1rem; font-weight: 700; color: #ffffff; }
+    .sidebar-name { font-size: 1.05rem; font-weight: 700; color: #ffffff; }
     .info-box { background: rgba(13, 31, 40, 0.85); border-left: 4px solid #00e5ff; padding: 15px; border-radius: 8px; margin-bottom: 12px; }
 </style>
 """, unsafe_allow_html=True)
 
 if "tokens" not in st.session_state:
-    st.session_state.tokens = [("BN-70421", "Demo Citizen", "Fresh Indian Passport (Normal)", "Verified & Forwarded to RPO Desk (Omkar)", "Aadhaar, PAN, 10th Marksheet")]
+    st.session_state.tokens = [("BN-70421", "Demo Citizen", "Fresh Indian Passport (Normal)", "Pre-Verified & Ready for Official Portal Submission", "Aadhaar, PAN, 10th Marksheet")]
 
 with st.sidebar:
-    st.markdown("### 🏛️ Grid Operations")
-    st.markdown('<div class="sidebar-card"><div class="sidebar-role">FOUNDER & CHIEF SYSTEMS ARCHITECT</div><div class="sidebar-name">Krishna</div></div>', unsafe_allow_html=True)
-    st.markdown('<div class="sidebar-card"><div class="sidebar-role">TEAM LEADER & DISPATCH MANAGER</div><div class="sidebar-name">Omkar</div></div>', unsafe_allow_html=True)
+    st.markdown("### 🏛️ Public Service Grid")
+    st.markdown('<div class="sidebar-card"><div class="sidebar-role">MISSION PHILOSOPHY</div><div class="sidebar-name">Service Before Self (₹0 Fee)</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-card"><div class="sidebar-role">INFRASTRUCTURE</div><div class="sidebar-name">Autonomous Citizen Portal</div></div>', unsafe_allow_html=True)
     st.markdown("---")
-    st.markdown("🌐 **Theme:** *Digital Professional*")
-    st.markdown("🟢 **System Grid:** *2026–2027 Active*")
+    st.markdown("🌐 **Access Mode:** *100% Free & Open*")
+    st.markdown("🟢 **Portal Status:** *Operational*")
 
 col_head, col_lang = st.columns([3, 1])
 with col_lang:
