@@ -1,5 +1,4 @@
 import streamlit as st
-import time
 import random
 
 # 1. Premium Page Configuration
@@ -32,7 +31,7 @@ st.markdown("""
         color: #80deea;
         font-weight: 500;
         margin-top: 4px;
-        margin-bottom: 20px;
+        margin-bottom: 14px;
     }
     .sidebar-card {
         background: rgba(16, 36, 46, 0.9);
@@ -119,11 +118,11 @@ with col_head:
         st.markdown('<div class="hero-title">🏛️ भारत नेक्सस</div>', unsafe_allow_html=True)
         st.markdown('<div class="hero-subtitle">स्मार्ट सार्वजनिक सेवा सेतू आणि स्वायत्त नागरिक योजना केंद्र</div>', unsafe_allow_html=True)
 
+# 100% Free Citizen Initiative Banner
 if is_en:
     st.markdown('<div style="background: rgba(0, 230, 118, 0.12); border: 1px solid #00e676; border-radius: 8px; padding: 10px 16px; margin-bottom: 18px; color: #b9f6ca; font-weight: 600;">✅ 100% FREE CITIZEN INITIATIVE: BHARAT NEXUS charges ₹0 portal/agent fee. All guidance, eligibility checks, and direct government portal links are completely free for every citizen.</div>', unsafe_allow_html=True)
 else:
     st.markdown('<div style="background: rgba(0, 230, 118, 0.12); border: 1px solid #00e676; border-radius: 8px; padding: 10px 16px; margin-bottom: 18px; color: #b9f6ca; font-weight: 600;">✅ १००% मोफत नागरिक उपक्रम: भारत नेक्सस कोणतेही पोर्टल किंवा एजंट शुल्क (₹०) आकारत नाही. सर्व मार्गदर्शन आणि शासकीय पोर्टल लिंक्स सर्व नागरिकांसाठी पूर्णपणे मोफत आहेत.</div>', unsafe_allow_html=True)
-
 
 # 5. Main Navigation Tabs
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
@@ -139,7 +138,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # ==========================================
 with tab1:
     st.subheader("🌐 Live Government Scheme Registry (Click Any Scheme to View Process)" if is_en else "🌐 थेट शासकीय योजना नोंदणी (प्रक्रिया पाहण्यासाठी योजनेवर क्लिक करा)")
-    
+
     category = st.radio(
         "Filter Schemes by Category:" if is_en else "श्रेणीनुसार योजना निवडा:",
         [
@@ -196,13 +195,3 @@ with tab1:
                 "title": "Udyam MSME Registration (Free Government Business ID)",
                 "benefit": "Official MSME status unlocking lower loan interest rates, subsidy on patent/ISO, and tender preferences.",
                 "docs": "1. Entrepreneur Aadhaar Number\n2. PAN Card & GSTIN (if applicable)\n3. Bank Account Number & IFSC",
-                "steps": "Step 1: Visit official Udyam portal and enter Aadhaar + Name.\nStep 2: Validate OTP and verify PAN details.\nStep 3: Enter business activity (NIC code), investment, and employee count.\nStep 4: Submit with final OTP to download instant Udyam Certificate.",
-                "url": "https://udyamregistration.gov.in"
-            }
-        ],
-        "🏥 Healthcare & Housing": [
-            {
-                "title": "Ayushman Bharat PM-JAY (₹5 Lakh Free Health Cover)",
-                "benefit": "Cashless treatment up to ₹5 lakh per family per year at empanelled government and private hospitals.",
-                "docs": "1. Aadhaar Card\n2. Ration Card / PM-JAY Family ID\n3. Registered Mobile Number",
-                "steps": "Step 1: Visit beneficiary.nha.gov.in and log in with mobile OTP.\nStep 2: Search your name by State, District, and Aadhaar/Ration number.\nStep 3: Complete e-KYC with Aadhaar OTP.\nStep 4: Download your Ayushman Golden Card immediately.",
