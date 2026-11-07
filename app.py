@@ -3,7 +3,6 @@ import random
 
 st.set_page_config(page_title="BHARAT NEXUS | Smart Public Service Bridge", page_icon="🏛️", layout="wide")
 
-# High-End Cinematic Animated CSS Injection
 st.markdown("""
 <style>
     @keyframes entryFade {
@@ -15,38 +14,19 @@ st.markdown("""
         50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 4px #00e676); }
         100% { transform: scale(1); opacity: 0.4; }
     }
-    
     .stApp { 
         background: linear-gradient(135deg, #0a1118 0%, #121e2d 100%); 
         color: #e2e8f0 !important;
         animation: entryFade 0.8s ease-out forwards;
     }
     [data-testid="stSidebar"] { background-color: #070d14 !important; border-right: 1px solid #1e293b; }
-    
-    .hero-title { 
-        font-size: 2.8rem; font-weight: 800; color: #00f2fe; letter-spacing: 2px; margin-bottom: 0px;
-        animation: entryFade 0.5s ease-out forwards;
-    }
-    .hero-subtitle { 
-        font-size: 1.15rem; color: #94a3b8; font-weight: 400; margin-top: 4px; margin-bottom: 14px;
-        animation: entryFade 0.7s ease-out forwards;
-    }
-    
+    .hero-title { font-size: 2.8rem; font-weight: 800; color: #00f2fe; letter-spacing: 2px; margin-bottom: 0px; }
+    .hero-subtitle { font-size: 1.15rem; color: #94a3b8; font-weight: 400; margin-top: 4px; margin-bottom: 14px; }
     .sidebar-card { background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
     .sidebar-role { font-size: 0.7rem; color: #38bdf8; letter-spacing: 1px; font-weight: 600; text-transform: uppercase; margin-bottom: 2px; }
     .sidebar-name { font-size: 0.95rem; font-weight: 600; color: #f8fafc; }
     .info-box { background: rgba(15, 23, 42, 0.6); border-left: 4px solid #00f2fe; padding: 16px; border-radius: 6px; margin-bottom: 16px; }
-    
-    .status-pulse {
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        background-color: #00e676;
-        border-radius: 50%;
-        margin-right: 6px;
-        animation: heartbeat 2s infinite ease-in-out;
-    }
-    
+    .status-pulse { display: inline-block; width: 8px; height: 8px; background-color: #00e676; border-radius: 50%; margin-right: 6px; animation: heartbeat 2s infinite ease-in-out; }
     div.stButton > button { background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%); color: white; font-weight: 600; border: none; border-radius: 6px; width: 100%; transition: all 0.3s; }
     div.stButton > button:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0, 198, 255, 0.3); }
 </style>
@@ -77,13 +57,12 @@ with col_head:
 st.markdown('<div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 6px; padding: 12px 16px; margin-bottom: 20px; color: #34d399; font-weight: 500; font-size: 0.95rem;">⚙️ PROD CONFIGURATION: This ecosystem operates with an absolute zero-fee baseline. No commercial tokens, hidden gateways, or third-party agent layers are attached to processing pipelines.</div>', unsafe_allow_html=True)
 
 st.markdown("### 📝 Mandated Public Rules, Regulations & Terms")
-with st.container():
-    st.markdown("""
-    *   **₹0 Platform Service Charge:** This gateway is completely free of cost. Nobody is authorized to demand money for utilizing this software.
-    *   **Statutory Fee Clearance:** Users understand that official government fees (e.g., ₹1,500 for a Passport or ₹107 for a PAN Card) are paid straight to official ministry treasuries without any hidden agent cuts.
-    *   **Anti-Bribery Grid:** This infrastructure bypasses cyber-cafe agents to protect rural, agricultural, and lower middle-class citizens from systemic corruption.
-    """)
-    agree = st.checkbox("🟢 I have read and agree to the Rules, Regulations, and Terms of Use of Bharat Nexus.")
+st.markdown("""
+*   **₹0 Platform Service Charge:** This gateway is completely free of cost. Nobody is authorized to demand money for utilizing this software.
+*   **Statutory Fee Clearance:** Users understand that official government fees (e.g., ₹1,500 for a Passport or ₹107 for a PAN Card) are paid straight to official ministry treasuries without any hidden agent cuts.
+*   **Anti-Bribery Grid:** This infrastructure bypasses cyber-cafe agents to protect rural, agricultural, and lower middle-class citizens from systemic corruption.
+""")
+agree = st.checkbox("🟢 I have read and agree to the Rules, Regulations, and Terms of Use of Bharat Nexus.")
 
 if agree:
     st.markdown("---")
@@ -125,9 +104,12 @@ if agree:
 
     with t4:
         st.subheader("📝 Universal Citizen Application Desk")
-        st.write("Input your parameters below and click submit to map data straight onto transmission ledgers.")
+        st.write("Input parameters below and click submit to append profiles directly to internal database ledgers.")
         c_name = st.text_input("Citizen Full Name")
         c_mob = st.text_input("Linked Contact Mobile Line")
         c_srv = st.selectbox("Select Target Framework Infrastructure:", ["Consular Passport Pipeline", "International Global Entry Visa", "State Revenue Matrix"])
         if st.button("🚀 SUBMIT APPLICATION"):
-            if not c_name.strip():
+            new_id = f"BN-{random.randint(10000, 99999)}"
+            st.session_state.db_tokens[new_id] = {"name": c_name if c_name.strip() else "Anonymous Citizen", "service": c_srv, "status": "Pre-Check Validated & Forwarded Successfully", "docs": "Standard KYC Proof Set"}
+            st.success(f"✅ Form Dispatched to System Ledger! Track Token: `{new_id}`")
+
