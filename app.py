@@ -3,59 +3,62 @@ import random
 
 st.set_page_config(page_title="BHARAT NEXUS | Smart Public Service Bridge", page_icon="🏛️", layout="wide")
 
+# Sophisticated Global CSS Injection
 st.markdown("""
 <style>
-    .stApp { background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: #ffffff !important; }
-    [data-testid="stSidebar"] { background-color: #0b1519 !important; border-right: 1px solid #1a3a4a; }
-    .hero-title { font-size: 3rem; font-weight: 800; color: #00e5ff; letter-spacing: 1.5px; margin-bottom: 0px; }
-    .hero-subtitle { font-size: 1.2rem; color: #80deea; font-weight: 500; margin-top: 4px; margin-bottom: 14px; }
-    .sidebar-card { background: rgba(16, 36, 46, 0.9); border: 1px solid #1e88e5; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
-    .sidebar-role { font-size: 0.72rem; color: #80deea; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
-    .sidebar-name { font-size: 1.05rem; font-weight: 700; color: #ffffff; }
-    .info-box { background: rgba(13, 31, 40, 0.85); border-left: 4px solid #00e5ff; padding: 15px; border-radius: 8px; margin-bottom: 12px; }
+    .stApp { background: linear-gradient(135deg, #0a1118 0%, #121e2d 100%); color: #e2e8f0 !important; }
+    [data-testid="stSidebar"] { background-color: #070d14 !important; border-right: 1px solid #1e293b; }
+    .hero-title { font-size: 2.8rem; font-weight: 800; color: #00f2fe; letter-spacing: 2px; margin-bottom: 0px; }
+    .hero-subtitle { font-size: 1.15rem; color: #94a3b8; font-weight: 400; margin-top: 4px; margin-bottom: 14px; }
+    .sidebar-card { background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+    .sidebar-role { font-size: 0.7rem; color: #38bdf8; letter-spacing: 1px; font-weight: 600; text-transform: uppercase; margin-bottom: 2px; }
+    .sidebar-name { font-size: 0.95rem; font-weight: 600; color: #f8fafc; }
+    .info-box { background: rgba(15, 23, 42, 0.6); border-left: 4px solid #00f2fe; padding: 16px; border-radius: 6px; margin-bottom: 16px; }
+    div.stButton > button { background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%); color: white; font-weight: 600; border: none; border-radius: 6px; width: 100%; transition: all 0.3s; }
+    div.stButton > button:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0, 198, 255, 0.3); }
 </style>
 """, unsafe_allow_html=True)
 
-if "tokens" not in st.session_state:
-    st.session_state.tokens = [("BN-70421", "Demo Citizen", "Fresh Indian Passport (Normal)", "Pre-Verified & Ready for Official Portal Submission", "Aadhaar, PAN, 10th Marksheet")]
+if "db_tokens" not in st.session_state:
+    st.session_state.db_tokens = {
+        "BN-70421": {"name": "Anoop Sharma", "service": "Fresh Indian Passport", "status": "Ready for Official Submission", "docs": "Aadhaar Card, PAN Card, 10th Certificate"}
+    }
 
 with st.sidebar:
-    st.markdown("### 🏛️ Public Service Grid")
+    st.markdown("### 🏛️ System Core")
     st.markdown('<div class="sidebar-card"><div class="sidebar-role">MISSION PHILOSOPHY</div><div class="sidebar-name">Service Before Self (₹0 Fee)</div></div>', unsafe_allow_html=True)
-    st.markdown('<div class="sidebar-card"><div class="sidebar-role">INFRASTRUCTURE</div><div class="sidebar-name">Autonomous Citizen Portal</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-card"><div class="sidebar-role">INFRASTRUCTURE</div><div class="sidebar-name">Autonomous Public Gateway</div></div>', unsafe_allow_html=True)
     st.markdown("---")
     st.markdown("🌐 **Access Mode:** *100% Free & Open*")
-    st.markdown("🟢 **Portal Status:** *Operational*")
+    st.markdown("🟢 **Network Engine:** *Operational*")
 
-col_head, col_lang = st.columns([3, 1])
+col_head, col_lang = st.columns([4, 1])
 with col_lang:
-    lang = st.selectbox("🌐 System Language", ["English", "मराठी (Marathi)"])
+    lang = st.selectbox("🌐 Interface Language", ["English", "मराठी (Marathi)"], label_visibility="collapsed")
 is_en = (lang == "English")
 
 with col_head:
-    if is_en:
-        st.markdown('<div class="hero-title">🏛️ BHARAT NEXUS</div>', unsafe_allow_html=True)
-        st.markdown('<div class="hero-subtitle">Smart Public Service Bridge & Autonomous Citizen Scheme Engine</div>', unsafe_allow_html=True)
-    else:
-        st.markdown('<div class="hero-title">🏛️ भारत नेक्सस</div>', unsafe_allow_html=True)
-        st.markdown('<div class="hero-subtitle">स्मार्ट सार्वजनिक सेवा सेतू आणि स्वायत्त नागरिक योजना केंद्र</div>', unsafe_allow_html=True)
+    title_text = "🏛️ BHARAT NEXUS" if is_en else "🏛️ भारत नेक्सस"
+    sub_text = "Smart Public Service Bridge & Autonomous Citizen Scheme Engine" if is_en else "स्मार्ट सार्वजनिक सेवा सेतू आणि स्वायत्त नागरिक योजना केंद्र"
+    st.markdown(f'<div class="hero-title">{title_text}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="hero-subtitle">{sub_text}</div>', unsafe_allow_html=True)
 
+banner_html = '<div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 6px; padding: 12px 16px; margin-bottom: 20px; color: #34d399; font-weight: 500; font-size: 0.95rem;">'
 if is_en:
-    st.markdown('<div style="background: rgba(0, 230, 118, 0.12); border: 1px solid #00e676; border-radius: 8px; padding: 10px 16px; margin-bottom: 18px; color: #b9f6ca; font-weight: 600;">✅ 100% FREE CITIZEN INITIATIVE: BHARAT NEXUS charges ₹0 portal/agent fee. All guidance, eligibility checks, and direct government portal links are completely free for every citizen.</div>', unsafe_allow_html=True)
+    st.markdown(banner_html + "⚙️ **PROD CONFIGURATION:** This ecosystem operates with an absolute zero-fee baseline. No commercial tokens, hidden gateways, or third-party agent layers are attached to processing pipelines.</div>", unsafe_allow_html=True)
 else:
-    st.markdown('<div style="background: rgba(0, 230, 118, 0.12); border: 1px solid #00e676; border-radius: 8px; padding: 10px 16px; margin-bottom: 18px; color: #b9f6ca; font-weight: 600;">✅ १००% मोफत नागरिक उपक्रम: भारत नेक्सस कोणतेही पोर्टल किंवा एजंट शुल्क (₹०) आकारत नाही. सर्व मार्गदर्शन आणि शासकीय पोर्टल लिंक्स सर्व नागरिकांसाठी पूर्णपणे मोफत आहेत.</div>', unsafe_allow_html=True)
+    st.markdown(banner_html + "⚙️ **अधिकृत निर्देश:** हे पोर्टल पूर्णपणे विनामूल्य चालते. कोणत्याही स्तरावर अतिरिक्त कमर्शियल शुल्क किंवा एजंट कमिशन समाविष्ट नाही.</div>", unsafe_allow_html=True)
 
-def card(title, summary, docs, steps, url):
-    with st.expander(f"📌 {title} — [Click to View Process & Apply]"):
-        st.markdown(f"**✨ Benefit / Purpose:** {summary}")
-        c1, c2 = st.columns(2)
-        with c1:
-            st.markdown("**📄 Required Documents:**")
-            st.info(docs)
-        with c2:
-            st.markdown("**🚀 Step-by-Step Forward Process:**")
-            st.success(steps)
-        st.link_button("🔗 Open Official Government Portal (₹0 Portal Fee)", url)
+def render_node(title, desc, reqs, steps, deep_url):
+    st.markdown(f"#### {title}")
+    st.markdown(f"<p style='color:#94a3b8; font-size:0.95rem; margin-top:-5px;'>{desc}</p>", unsafe_allow_html=True)
+    c1, c2 = st.columns(2)
+    with c1:
+        st.info(f"**📄 Document Matrix:**\n\n{reqs}")
+    with c2:
+        st.success(f"**🚀 Execution Workflow:**\n\n{steps}")
+    st.link_button("🌐 Initialize Direct Government Pipeline Form", deep_url)
+    st.markdown("<hr style='border-color: #1e293b; margin: 20px 0;' />", unsafe_allow_html=True)
 
 t1, t2, t3, t4, t5 = st.tabs([
     "🌐 Government Schemes" if is_en else "🌐 शासकीय योजना",
@@ -66,32 +69,26 @@ t1, t2, t3, t4, t5 = st.tabs([
 ])
 
 with t1:
-    st.subheader("🌐 Live Government Scheme Registry" if is_en else "🌐 थेट शासकीय योजना नोंदणी")
-    cat = st.radio("Select Category:", ["🌾 Agriculture & Farmers", "🎓 Student Scholarships", "💼 Business & Startups", "🏥 Healthcare & Housing"], horizontal=True)
-    if cat == "🌾 Agriculture & Farmers":
-        card("PM-KISAN Samman Nidhi (₹6,000/Year)", "₹6,000/year direct support in 3 installments to farmer families.", "1. Aadhaar Card\n2. Land 7/12 Extract\n3. DBT-enabled Bank Passbook", "1. Visit pmkisan.gov.in -> New Farmer Registration.\n2. Enter Aadhaar & land details.\n3. Complete e-KYC via OTP or CSC.", "https://pmkisan.gov.in")
-        card("PM Fasal Bima Yojana (Crop Insurance)", "Insurance cover against drought, flood & unseasonal rain.", "1. Aadhaar & Bank Passbook\n2. Land 7/12 & 8A\n3. Sowing Certificate", "1. Open pmfby.gov.in -> Farmer Corner.\n2. Select Kharif/Rabi crop & area.\n3. Pay nominal premium & download receipt.", "https://pmfby.gov.in")
-    elif cat == "🎓 Student Scholarships":
-        card("National Scholarship Portal (NSP)", "Central & UGC/AICTE scholarships for school & college students.", "1. Aadhaar & Photo\n2. Previous Marksheet\n3. Income, Caste & Domicile Certificates\n4. Bonafide Certificate", "1. Complete OTR registration on scholarships.gov.in.\n2. Fill academic & bank details.\n3. Submit & verify at institute.", "https://scholarships.gov.in")
-        card("MahaDBT State Post-Matric Scholarship", "Tuition & exam fee reimbursement for SC/ST/OBC/EWS/Minority students.", "1. Aadhaar Card\n2. Income (<₹8L) & Caste Certificate\n3. CAP Allotment & Leaving Certificate", "1. Log in at mahadbt.maharashtra.gov.in.\n2. Complete profile & apply under All Schemes.\n3. Track scrutiny status online.", "https://maharashtra.gov.in")
-    elif cat == "💼 Business & Startups":
-        card("PM MUDRA Yojana (Loans up to ₹20 Lakh)", "Collateral-free business loans (Shishu, Kishore, Tarun).", "1. Aadhaar, PAN & Voter ID\n2. Udyam Registration\n3. 6-Month Bank Statement & Quotation", "1. Register on Udyam portal.\n2. Apply online via jansamarth.in.\n3. Submit KYC to bank for disbursement.", "https://jansamarth.in")
-        card("Udyam MSME Registration (Free Govt ID)", "Official MSME certificate for loan subsidies & tenders.", "1. Aadhaar & PAN Card\n2. Bank Account & IFSC", "1. Visit udyamregistration.gov.in.\n2. Verify Aadhaar & PAN via OTP.\n3. Download instant certificate.", "https://udyamregistration.gov.in")
+    st.subheader("🌐 Live Welfare Registry Node" if is_en else "🌐 थेट शासकीय योजना केंद्र")
+    cat = st.radio("Category Router:", ["🌾 Agriculture Node", "🎓 Academic Scholarships", "💼 Industrial Startups", "🏥 Healthcare Core"], horizontal=True, label_visibility="collapsed")
+    
+    if "Agriculture" in cat:
+        render_node("PM-KISAN Financial Support System", "Direct annual cash transfer grid for authenticated agricultural land holders.", "• Aadhaar card with active mobile tie-in\n• Land registry document (7/12 Extract or State Khatauni)\n• Bank passbook mapped to NPCI clearing house", "1. Access the official registration system through our secure routing engine node below.\n2. Key in the Aadhaar baseline info, extract land coordinates, and submit via automated OTP check.", "https://pmkisan.gov.in")
+        render_node("Pradhan Mantri Fasal Bima Subsidies", "State-backed financial defense matrix protecting agrarian yield against micro-climate disruptions.", "• System verified Aadhaar card\n• Formal sowing certificate signed by village supervisor\n• Active bank statements", "1. Open the verified state crop insurance ledger link below.\n2. Match coordinates to map yield risks, execute premium share balance, and store configuration.", "https://pmfby.gov.in")
+    elif "Scholarships" in cat:
+        render_node("National Scholarship Portal Integration", "Central administrative platform managing performance grants for active academic candidates.", "• Standard institutional bonafide clearance form\n• Verified household annual gross revenue report\n• Previous academic milestone scorecards", "1. Secure your One-Time Token (OTR) profile on the live central cloud repository below.\n2. Pinpoint target scheme based on baseline criteria, mount proofs, and forward to college panel.", "https://scholarships.gov.in")
+    elif "Industrial" in cat:
+        render_node("Udyam National Enterprise System", "Instant government framework granting statutory legal status and tender advantages to micro-businesses.", "• Executive identity card (PAN)\n• Primary system holder Aadhaar\n• Bank transaction matrix details", "1. Launch the legal federal industry registration platform below.\n2. Complete data validation fields via double OTP check, download enterprise certificate instantly.", "https://udyamregistration.gov.in")
     else:
-        card("Ayushman Bharat PM-JAY (₹5 Lakh Health Cover)", "Cashless hospital treatment up to ₹5 lakh/family/year.", "1. Aadhaar Card\n2. Ration Card / Family ID", "1. Log in at beneficiary.nha.gov.in.\n2. Verify family via Aadhaar OTP.\n3. Download Ayushman Golden Card.", "https://nha.gov.in")
-        card("Pradhan Mantri Awas Yojana (PMAY)", "Housing subsidy for building or buying a pucca house.", "1. Family Aadhaar Cards\n2. Income Proof & Bank Passbook\n3. No-Pucca-House Affidavit", "1. Visit pmaymis.gov.in -> Citizen Assessment.\n2. Enter Aadhaar & income details.\n3. Save Reference ID for verification.", "https://pmaymis.gov.in")
+        render_node("Ayushman Bharat Cloud Health System", "Statutory medical protection system guaranteeing ₹5,000,000 coverage across associated private medical nodes.", "• Active identity baseline data\n• Official civil supply index card (Ration Card)", "1. Verify network status on the national healthcare matrix page below via biometric OTP check.\n2. Download secure golden verification passport instantly.", "https://nha.gov.in")
 
 with t2:
-    st.subheader("🛂 Indian Passport & International Visa Services" if is_en else "🛂 भारतीय पासपोर्ट आणि व्हिसा सेवा")
-    pv = st.selectbox("Select Passport or Visa Service:", ["📘 Fresh Indian Passport (Normal / Tatkaal)", "🔄 Passport Renewal / Re-issue / Address Change", "🛡️ Police Clearance Certificate (PCC)", "✈️ International Visa (Tourist / Student / Work)", "🇮🇳 Indian e-Visa (For Foreign Visitors)"])
-    if "Fresh" in pv:
-        tl, fee, url = "Normal: 15–30 Days | Tatkaal: 1–3 Working Days", "₹0 BHARAT NEXUS Fee | Govt Fee: ₹1,500 (36p) / ₹2,000 (60p) [+₹2,000 Tatkaal]", "https://passportindia.gov.in"
-        docs, proc = "• Address Proof: Aadhaar / Electricity Bill / Bank Passbook / Voter ID\n• DOB Proof: Birth Certificate / 10th Marksheet / PAN\n• Non-ECR Proof: 10th Pass Marksheet", "1. Register at passportindia.gov.in -> Apply for Fresh Passport.\n2. Fill details, pay govt fee & book PSK appointment.\n3. Visit PSK with ORIGINAL documents for biometrics.\n4. Complete Police Verification; receive passport by Speed Post."
-    elif "Renewal" in pv:
-        tl, fee, url = "7–20 Working Days", "₹0 BHARAT NEXUS Fee | Govt Fee: ₹1,500 (Normal) / ₹3,500 (Tatkaal)", "https://passportindia.gov.in"
-        docs, proc = "• Original Old Passport + Photocopy of first & last 2 pages\n• New Address Proof (Aadhaar/Voter ID) if changing address", "1. Log in to Passport Seva -> Apply for Re-issue of Passport.\n2. Select reason, pay fee & book PSK slot.\n3. Visit PSK with Old Passport & new proofs."
-    elif "PCC" in pv:
-        tl, fee, url = "7–15 Working Days", "₹0 BHARAT NEXUS Fee | Govt Fee: ₹500", "https://passportindia.gov.in"
-        docs, proc = "• Valid Original Passport + Photocopy\n• Present Address Proof & Employment/Immigration Letter", "1. Log in at passportindia.gov.in -> Apply for PCC.\n2. Pay ₹500 & book PSK appointment.\n3. Complete police verification & collect PCC."
+    st.subheader("🛂 Consular, Passport & Global Entry Portal" if is_en else "🛂 पासपोर्ट आणि व्हिसा विभाग")
+    pv = st.selectbox("Consular Track:", ["Select Option...", "📘 Fresh Indian Passport Protocol", "🔄 Passport Re-Issue & Particular Updates", "🛡️ Police Clearance Certificate Node", "✈️ International Entry Visa Setup", "🇮🇳 Electronic India Entry Visa (Inbound)"])
+    
+    if "Fresh" in pv or "Re-Issue" in pv or "Police" in pv:
+        st.markdown(f'<div class="info-box"><b>🔧 Transaction Config:</b> 100% Secure MEA Node | <b>💳 Cost Metric:</b> ₹0 Portal Surcharge (Direct Statutory Ministry Fees Apply)</div>', unsafe_allow_html=True)
+        render_node("Ministry of External Affairs Passport Issuance System", "Official legal framework routing biometric information directly to the Regional Passport Officer network.", "• Universal residency verification (Aadhaar, Voter ID, or Active utilities statement)\n• Valid legal age baseline documentation (PAN, Matriculation verification document, or Birth record)\n• Non-ECR authentication matrix certificate", "1. Engage the official server page below to establish a clean login state.\n2. Deploy form details, wire standard legal fees securely via digital banking, and reserve biometric capture slot at closest PSK.", "https://passportindia.gov.in")
     elif "International" in pv:
-        tl, fee, url = "3 Days (e-Visa) to 4–8 Weeks (US/UK/Schengen)", "₹0 BHARAT NEXUS Fee | Embassy/VFS fee varies by country", "https://vfsglobal.com"
+        render_node("VFS Global Sovereign Appointment Manager", "Direct channel connecting citizen profiles to individual foreign consulates and secure biometric validation facilities.", "• Valid passport data matrix with minimum two blank leaves remaining\n• Verified 6 months clean capital account banking records and tax evaluation history\n• Valid structural proof of accommodation matching global travel regulations", "1. Initialize the official route pipeline below, select destination country profile, and map processing specifications.\n2. Set processing timeline parameters, mount financial proofs, and schedule biometric handshakes.", "https://vfsglobal.com")
+    elif "Electronic" in pv:
