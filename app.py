@@ -3,7 +3,6 @@ import random
 
 st.set_page_config(page_title="BHARAT NEXUS | Smart Public Service Bridge", page_icon="🏛️", layout="wide")
 
-# Sophisticated Global CSS Injection
 st.markdown("""
 <style>
     .stApp { background: linear-gradient(135deg, #0a1118 0%, #121e2d 100%); color: #e2e8f0 !important; }
@@ -32,9 +31,9 @@ with st.sidebar:
     st.markdown("🌐 **Access Mode:** *100% Free & Open*")
     st.markdown("🟢 **Network Engine:** *Operational*")
 
-col_head, col_lang = st.columns()
+col_head, col_lang = st.columns(2)
 with col_lang:
-    lang = st.selectbox("🌐 Interface Language", ["English", "मराठी (Marathi)"], label_visibility="collapsed")
+    lang = st.selectbox("🌐 Interface Language", ["English", "मराठी (Marathi)"])
 is_en = (lang == "English")
 
 with col_head:
@@ -70,7 +69,7 @@ t1, t2, t3, t4, t5 = st.tabs([
 
 with t1:
     st.subheader("🌐 Live Welfare Registry Node" if is_en else "🌐 थेट शासकीय योजना केंद्र")
-    cat = st.radio("Category Router:", ["🌾 Agriculture Node", "🎓 Academic Scholarships", "💼 Industrial Startups", "🏥 Healthcare Core"], horizontal=True, label_visibility="collapsed")
+    cat = st.radio("Category Router:", ["🌾 Agriculture Node", "🎓 Academic Scholarships", "💼 Industrial Startups", "🏥 Healthcare Core"], horizontal=True)
     
     if "Agriculture" in cat:
         render_node("PM-KISAN Financial Support System", "Direct annual cash transfer grid for authenticated agricultural land holders.", "• Aadhaar card with active mobile tie-in\n• Land registry document (7/12 Extract or State Khatauni)\n• Bank passbook mapped to NPCI clearing house", "1. Access the official registration system through our secure routing engine node below.\n2. Key in the Aadhaar baseline info, extract land coordinates, and submit via automated OTP check.", "https://pmkisan.gov.in")
@@ -85,8 +84,7 @@ with t1:
 with t2:
     st.subheader("🛂 Consular, Passport & Global Entry Portal" if is_en else "🛂 पासपोर्ट आणि व्हिसा विभाग")
     pv = st.selectbox("Consular Track:", ["📘 Fresh Indian Passport Protocol", "🔄 Passport Re-Issue & Updates", "🛡️ Police Clearance Certificate Node", "✈️ International Entry Visa Setup", "🇮🇳 Electronic India Entry Visa (Inbound)"])
-    
-    st.markdown(f'<div class="info-box"><b>🔧 Transaction Config:</b> 100% Secure MEA Node | <b>💳 Cost Metric:</b> ₹0 Portal Surcharge</div>', unsafe_allow_html=True)
+    st.markdown('<div class="info-box"><b>🔧 Transaction Config:</b> 100% Secure Node | <b>💳 Cost Metric:</b> ₹0 Portal Surcharge</div>', unsafe_allow_html=True)
     
     if "Fresh" in pv or "Re-Issue" in pv:
         render_node("Ministry of External Affairs Passport Issuance System", "Official legal framework routing biometric information directly to the Regional Passport Officer network.", "• Universal residency verification (Aadhaar, Voter ID, or Active utilities statement)\n• Valid legal age baseline documentation (PAN, Matriculation verification document, or Birth record)\n• Non-ECR authentication matrix certificate", "1. Engage the official server page below to establish a clean login state.\n2. Deploy form details, wire standard legal fees securely via digital banking, and reserve biometric capture slot at closest PSK.", "https://passportindia.gov.in")
