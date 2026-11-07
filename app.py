@@ -91,3 +91,4 @@ with t2:
     if "Setup" in pv:
         render_node("VFS Global Sovereign Appointment Manager", "Direct channel connecting citizen profiles to individual foreign consulates and secure biometric validation facilities.", "• Valid passport data matrix with minimum two blank leaves remaining\n• Verified 6 months clean capital account banking records and tax evaluation history\n• Valid structural proof of accommodation matching global travel regulations", "1. Initialize the official route pipeline below, select destination country profile, and map processing specifications.\n2. Set processing timeline parameters, mount financial proofs, and schedule biometric handshakes.", "https://vfsglobal.com")
     if "Inbound" in pv:
+    pass
