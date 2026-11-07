@@ -21,7 +21,7 @@ st.markdown("""
 
 if "db_tokens" not in st.session_state:
     st.session_state.db_tokens = {
-        "BN-70421": {"name": "Anoop Sharma", "service": "Fresh Indian Passport", "status": "Ready for Official Submission", "docs": "Aadhaar Card, PAN Card, 10th Certificate"}
+        "BN-70421": {"name": "Anoop Sharma", "service": "Consular Passport Pipeline", "status": "Ready for Official Submission", "docs": "Aadhaar Card, PAN Card, 10th Certificate"}
     }
 
 with st.sidebar:
@@ -32,7 +32,7 @@ with st.sidebar:
     st.markdown("🌐 **Access Mode:** *100% Free & Open*")
     st.markdown("🟢 **Network Engine:** *Operational*")
 
-col_head, col_lang = st.columns([4, 1])
+col_head, col_lang = st.columns()
 with col_lang:
     lang = st.selectbox("🌐 Interface Language", ["English", "मराठी (Marathi)"], label_visibility="collapsed")
 is_en = (lang == "English")
@@ -75,20 +75,23 @@ with t1:
     if "Agriculture" in cat:
         render_node("PM-KISAN Financial Support System", "Direct annual cash transfer grid for authenticated agricultural land holders.", "• Aadhaar card with active mobile tie-in\n• Land registry document (7/12 Extract or State Khatauni)\n• Bank passbook mapped to NPCI clearing house", "1. Access the official registration system through our secure routing engine node below.\n2. Key in the Aadhaar baseline info, extract land coordinates, and submit via automated OTP check.", "https://pmkisan.gov.in")
         render_node("Pradhan Mantri Fasal Bima Subsidies", "State-backed financial defense matrix protecting agrarian yield against micro-climate disruptions.", "• System verified Aadhaar card\n• Formal sowing certificate signed by village supervisor\n• Active bank statements", "1. Open the verified state crop insurance ledger link below.\n2. Match coordinates to map yield risks, execute premium share balance, and store configuration.", "https://pmfby.gov.in")
-    elif "Scholarships" in cat:
+    if "Scholarships" in cat:
         render_node("National Scholarship Portal Integration", "Central administrative platform managing performance grants for active academic candidates.", "• Standard institutional bonafide clearance form\n• Verified household annual gross revenue report\n• Previous academic milestone scorecards", "1. Secure your One-Time Token (OTR) profile on the live central cloud repository below.\n2. Pinpoint target scheme based on baseline criteria, mount proofs, and forward to college panel.", "https://scholarships.gov.in")
-    elif "Industrial" in cat:
+    if "Industrial" in cat:
         render_node("Udyam National Enterprise System", "Instant government framework granting statutory legal status and tender advantages to micro-businesses.", "• Executive identity card (PAN)\n• Primary system holder Aadhaar\n• Bank transaction matrix details", "1. Launch the legal federal industry registration platform below.\n2. Complete data validation fields via double OTP check, download enterprise certificate instantly.", "https://udyamregistration.gov.in")
-    else:
+    if "Healthcare" in cat:
         render_node("Ayushman Bharat Cloud Health System", "Statutory medical protection system guaranteeing ₹5,000,000 coverage across associated private medical nodes.", "• Active identity baseline data\n• Official civil supply index card (Ration Card)", "1. Verify network status on the national healthcare matrix page below via biometric OTP check.\n2. Download secure golden verification passport instantly.", "https://nha.gov.in")
 
 with t2:
     st.subheader("🛂 Consular, Passport & Global Entry Portal" if is_en else "🛂 पासपोर्ट आणि व्हिसा विभाग")
-    pv = st.selectbox("Consular Track:", ["Select Option...", "📘 Fresh Indian Passport Protocol", "🔄 Passport Re-Issue & Particular Updates", "🛡️ Police Clearance Certificate Node", "✈️ International Entry Visa Setup", "🇮🇳 Electronic India Entry Visa (Inbound)"])
+    pv = st.selectbox("Consular Track:", ["📘 Fresh Indian Passport Protocol", "🔄 Passport Re-Issue & Updates", "🛡️ Police Clearance Certificate Node", "✈️ International Entry Visa Setup", "🇮🇳 Electronic India Entry Visa (Inbound)"])
     
-    if "Fresh" in pv or "Re-Issue" in pv or "Police" in pv:
-        st.markdown(f'<div class="info-box"><b>🔧 Transaction Config:</b> 100% Secure MEA Node | <b>💳 Cost Metric:</b> ₹0 Portal Surcharge (Direct Statutory Ministry Fees Apply)</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="info-box"><b>🔧 Transaction Config:</b> 100% Secure MEA Node | <b>💳 Cost Metric:</b> ₹0 Portal Surcharge</div>', unsafe_allow_html=True)
+    
+    if "Fresh" in pv or "Re-Issue" in pv:
         render_node("Ministry of External Affairs Passport Issuance System", "Official legal framework routing biometric information directly to the Regional Passport Officer network.", "• Universal residency verification (Aadhaar, Voter ID, or Active utilities statement)\n• Valid legal age baseline documentation (PAN, Matriculation verification document, or Birth record)\n• Non-ECR authentication matrix certificate", "1. Engage the official server page below to establish a clean login state.\n2. Deploy form details, wire standard legal fees securely via digital banking, and reserve biometric capture slot at closest PSK.", "https://passportindia.gov.in")
-    elif "International" in pv:
+    if "PCC" in pv or "Police" in pv:
+        render_node("Police Clearance Certificate (PCC) Issuance Node", "Statutory background validation for employment or immigration pathways.", "• Original valid Indian Passport asset\n• Address confirmation and corporate placement documentation", "1. Activate application ledger link below.\n2. Schedule biometric verification window, execute local dispatch check, and generate verification pass.", "https://passportindia.gov.in")
+    if "International" in pv:
         render_node("VFS Global Sovereign Appointment Manager", "Direct channel connecting citizen profiles to individual foreign consulates and secure biometric validation facilities.", "• Valid passport data matrix with minimum two blank leaves remaining\n• Verified 6 months clean capital account banking records and tax evaluation history\n• Valid structural proof of accommodation matching global travel regulations", "1. Initialize the official route pipeline below, select destination country profile, and map processing specifications.\n2. Set processing timeline parameters, mount financial proofs, and schedule biometric handshakes.", "https://vfsglobal.com")
-    elif "Electronic" in pv:
+    if "Electronic" in pv:
