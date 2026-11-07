@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-import time
 
 st.set_page_config(page_title="BHARAT NEXUS | Smart Public Service Bridge", page_icon="🏛️", layout="wide")
 
@@ -15,7 +14,7 @@ st.markdown("""
         50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 4px #00e676); }
         100% { transform: scale(1); opacity: 0.4; }
     }
-    .stApp { background: linear-gradient(135deg, #0a1118 0%, #121e2d 100%); color: #e2e8f0 !important; }
+    .stApp { background: linear-gradient(135deg, #0a1118 0%, #121e2d 100%); color: #e2e8f0 !important; animation: entryFade 0.8s ease-out forwards; }
     [data-testid="stSidebar"] { background-color: #070d14 !important; border-right: 1px solid #1e293b; }
     .hero-title { font-size: 2.8rem; font-weight: 800; color: #00f2fe; letter-spacing: 2px; margin-bottom: 0px; }
     .hero-subtitle { font-size: 1.15rem; color: #94a3b8; font-weight: 400; margin-top: 4px; margin-bottom: 14px; }
@@ -35,6 +34,11 @@ if "booted" not in st.session_state:
 
 if "db_tokens" not in st.session_state:
     st.session_state.db_tokens = {"BN-70421": {"name": "Anoop Sharma", "service": "Consular Passport Pipeline", "status": "Ready for Dispatch Node", "docs": "Aadhaar Card"}}
+
+if "form_name" not in st.session_state:
+    st.session_state.form_name = ""
+if "form_mob" not in st.session_state:
+    st.session_state.form_mob = ""
 
 def render_node(title, desc, reqs, steps, deep_url):
     st.markdown(f"#### {title}")
@@ -97,6 +101,7 @@ else:
         with t2:
             st.subheader("🛂 Consular, Passport & Global Entry Portal")
             pv = st.selectbox("Consular Track:", ["📘 Fresh Indian Passport Protocol", "🔄 Passport Re-Issue & Updates", "🛡️ Police Clearance Certificate Node", "✈️ International Entry Visa Setup"])
+            st.markdown("⚠️ *Note: Physical attendance at your local Passport Office and Police Station is mandatory for final fingerprint scans and official validation.*")
             if "Passport" in pv or "Updates" in pv:
                 render_node("Ministry of External Affairs Passport Issuance System", "Routing information directly to RPO network.", "Residency verification (Aadhaar/Utility) and valid age document (PAN/Birth Record)", "Open official portal link below, fill fields safely, wire standard fee, and book biometric slot.", "https://passportindia.gov.in")
             if "Certificate" in pv or "Node" in pv:
@@ -106,4 +111,3 @@ else:
 
         with t3:
             st.subheader("🪪 Identity Matrix & Vital Records Registry")
-            render_node("Aaple Sarkar State Revenue Certificate Engine", "Document processing for income, domicile, and caste.", "Aadhaar, Ration Card, local verification report", "Open state records directory, mount clear image file proofs, pay nominal fee, and download.", "https://mahaonline.gov.in")
