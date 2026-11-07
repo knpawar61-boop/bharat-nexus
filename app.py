@@ -35,11 +35,6 @@ if "booted" not in st.session_state:
 if "db_tokens" not in st.session_state:
     st.session_state.db_tokens = {"BN-70421": {"name": "Anoop Sharma", "service": "Consular Passport Pipeline", "status": "Ready for Dispatch Node", "docs": "Aadhaar Card"}}
 
-if "form_name" not in st.session_state:
-    st.session_state.form_name = ""
-if "form_mob" not in st.session_state:
-    st.session_state.form_mob = ""
-
 def render_node(title, desc, reqs, steps, deep_url):
     st.markdown(f"#### {title}")
     st.info(f"**📄 Document Matrix:** {reqs}")
@@ -111,3 +106,4 @@ else:
 
         with t3:
             st.subheader("🪪 Identity Matrix & Vital Records Registry")
+            render_node("Aaple Sarkar State Revenue Certificate Engine", "Document processing for income, domicile, and caste.", "Aadhaar, Ration Card, local verification report", "Open state records directory, mount clear image file proofs, pay nominal fee, and download.", "https://mahaonline.gov.in")
